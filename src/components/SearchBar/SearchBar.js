@@ -1,16 +1,24 @@
-import { useState } from "react";
-import styles from "./SearchBar.module.css";
+import React, { useState, useCallback } from "react";
+import "./SearchBar.css";
 
-function SearchBar() {
+function SearchBar(props) {
   const [term, setTerm] = useState("");
+
+  const handleTermChange = useCallback((event) => {
+    setTerm(event.target.value);
+  }, []);
+
+  const search = useCallback(() => {
+    props.onSearch(term);
+  }, [props.onSearch, term]);
+
   return (
-    <>
-      <form className={styles.searchForm}>
-        {/* <label>Search Spotify: </label> */}
-        <input type="text" placeholder="Enter a song, album, or artist" value={term} onChange={(e) => setTerm(e.target.value)} />
-        <button type="submit">Search</button>
-      </form>
-    </>
+    <div className="SearchBar">
+      <input placeholder="Enter a song title" onChange={handleTermChange} />
+      <button className="SearchButton" onClick={search}>
+        SEARCH
+      </button>
+    </div>
   );
 }
 

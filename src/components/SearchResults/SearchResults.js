@@ -1,30 +1,14 @@
-// import { useState } from "react";
-import styles from "./SearchResults.module.css";
+import React from "react";
 
-import Track from "../Track/Track";
+import "./SearchResults.css";
+
+import TrackList from "../TrackList/TrackList";
 
 function SearchResults(props) {
-  //   const [results, setResults] = useState([]);
   return (
-    <div className={styles.box}>
-      <h2 className={styles.responseMessage}>Results for "something"</h2>
-      <ul className={styles.searchResults}>
-        <li>
-          <Track />
-        </li>
-        <li>
-          <Track />
-        </li>
-        <li>
-          <Track />
-        </li>
-        <li>
-          <Track />
-        </li>
-        <li>
-          <Track />
-        </li>
-      </ul>
+    <div className="SearchResults">
+      <h2>Results</h2>
+      <TrackList tracks={props.searchResults} onAdd={props.onAdd} />
     </div>
   );
 }
