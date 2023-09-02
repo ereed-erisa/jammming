@@ -1,0 +1,8 @@
+.trackInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.artist {
+  color: #c2c2c2af;
+}
